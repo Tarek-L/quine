@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void print_escaped(char *s) {
+void printEscaped(char *s) {
   for (int i = 0; s[i]; i++) {
     switch (s[i]) {
     case '\n':
@@ -21,19 +21,18 @@ void print_escaped(char *s) {
   }
 }
 
+void printSelf(char *s) {
+  for (int i = 0; s[i]; i++) {
+    if (s[i] == 33)
+      printEscaped(s);
+    else
+      putchar(s[i]);
+  }
+}
+
 int main(void) {
 
-  char *src = "#include <stdio.h>\n"
-              "\n"
-              "int main(void){\n"
-              "\n"
-              "    char* src = %c%s%c;\n"
-              "\n"
-              "    printf(src, '\"', src, '\"');\n"
-              "\n"
-              "    return 0;\n"
-              "}\n";
-  printf(src, '\"', src, '\"');
-  print_escaped(src);
+  char *src = "\n#include <stdio.h>\n\nvoid printEscaped(char *s) {\n  for (int i = 0; s[i]; i++) {\n    switch (s[i]) {\n    case '\n':\n      putchar('\\');\n      putchar('n');\n      continue;\n    case '\"':\n      putchar('\\');\n      putchar('\"');\n      continue;\n    case '\\':\n      putchar('\\');\n      putchar('\\');\n      continue;\n    default:\n      putchar(s[i]);\n    };\n  }\n}\n\nvoid printSelf(char *s) {\n  for (int i = 0; s[i]; i++) {\n    if (s[i] == 33)\n      printEscaped(s);\n    else\n      putchar(s[i]);\n  }\n}\n\nint main(void) {\n\n  char *src = \"!\" ;\n  printSelf(src);\n  return 0;\n}\n";
+  printSelf(src);
   return 0;
 }
