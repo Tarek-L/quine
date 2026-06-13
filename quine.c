@@ -15,6 +15,9 @@ int main(void) {
 
   printf("%s\n", src);
 
+    char *s = "char *s = %c%s%c;";
+    printf(s,'"',s,'"');
+
   return 0;
 }
 
