@@ -6,18 +6,14 @@ int main(void) {
               "\n"
               "int main(void){\n"
               "\n"
-              "    char* src = \"\";\n"
+              "    char* src = %c%s%c;\n"
               "\n"
               "    printf(\"%s\\n\", src);\n"
               "\n"
               "    return 0;\n"
               "}";
 
-  printf("%s\n", src);
-
-    char *s = "char *s = %c%s%c;";
-    printf(s,'"',s,'"');
+  printf(src, '"', src, '"');
 
   return 0;
 }
-
