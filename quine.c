@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 void printEscaped(char *s) {
@@ -7,7 +8,7 @@ void printEscaped(char *s) {
       putchar('\\');
       putchar('n');
       continue;
-    case '"':
+    case '\"':
       putchar('\\');
       putchar('"');
       continue;
@@ -32,7 +33,7 @@ void printSelf(char *s) {
 
 int main(void) {
 
-  char *src = "\n#include <stdio.h>\n\nvoid printEscaped(char *s) {\n  for (int i = 0; s[i]; i++) {\n    switch (s[i]) {\n    case '\\n':\n      putchar('\\');\n      putchar('n');\n      continue;\n    case '\"':\n      putchar('\\');\n      putchar('\"');\n      continue;\n    case '\\':\n      putchar('\\');\n      putchar('\\');\n      continue;\n    default:\n      putchar(s[i]);\n    };\n  }\n}\n\nvoid printSelf(char *s) {\n  for (int i = 0; s[i]; i++) {\n    if (s[i] == 33)\n      printEscaped(s);\n    else\n      putchar(s[i]);\n  }\n}\n\nint main(void) {\n\n  char *src = \"!\";\n\n  printSelf(src);\n\n  return 0;\n}\n";
+  char *src = "\n#include <stdio.h>\n\nvoid printEscaped(char *s) {\n  for (int i = 0; s[i]; i++) {\n    switch (s[i]) {\n    case '\\n':\n      putchar('\\\\');\n      putchar('n');\n      continue;\n    case '\\\"':\n      putchar('\\\\');\n      putchar('\"');\n      continue;\n    case '\\\\':\n      putchar('\\\\');\n      putchar('\\\\');\n      continue;\n    default:\n      putchar(s[i]);\n    };\n  }\n}\n\nvoid printSelf(char *s) {\n  for (int i = 0; s[i]; i++) {\n    if (s[i] == 33)\n      printEscaped(s);\n    else\n      putchar(s[i]);\n  }\n}\n\nint main(void) {\n\n  char *src = \"!\";\n\n  printSelf(src);\n\n  return 0;\n}\n";
 
   printSelf(src);
 
