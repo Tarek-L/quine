@@ -8,10 +8,10 @@ int main(void) {
               "\n"
               "    char* src = %c%s%c;\n"
               "\n"
-              "    printf(\"%s\\n\", src);\n"
+              "    printf(src, '\"', src, '\"');\n"
               "\n"
               "    return 0;\n"
-              "}";
+              "}\n";
 
   printf(src, '"', src, '"');
 
