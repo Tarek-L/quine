@@ -1,14 +1,7 @@
 #include <stdio.h>
-#define print(x,y) int main(void){return 0;}
+#define pass int main(void){char* src = "#include<stdio.h>%c#define print(x,y) int main(void){char* src = %c%s%c;printf(src, 10, 34, src, 34, 10, 10, 10, 34, 34);return 0;}%c#define a /*%c#*/%cpass";printf(src, 10, 34, src, 34, 10, 10, 10);return 0;}
 #define a /*
-
-print("hello world")
-
-#define */
-
-print("",end='')
-
-
-
-
-
+s='s=%r\nprint(s%%s)'
+print(s%s)
+#*/
+pass
