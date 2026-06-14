@@ -1,9 +1,14 @@
 #include <stdio.h>
-#define input(x) int main(void){
-#define print(x) printf("i don't even ask for you input in C\n"); return 0;}  
+#define print(x,y) int main(void){return 0;}
+#define a /*
 
-input("your input does not matter\n")
 print("hello world")
+
+#define */
+
+print("",end='')
+
+
 
 
 
